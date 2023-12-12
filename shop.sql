@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Dec 12, 2023 at 05:56 PM
+-- Generation Time: Dec 12, 2023 at 06:03 PM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.2.28
 
@@ -73,6 +73,14 @@ CREATE TABLE `Currencies` (
   `updatedAt` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `Currencies`
+--
+
+INSERT INTO `Currencies` (`id`, `title`, `createdAt`, `updatedAt`) VALUES
+(1, ' ریال', '2023-12-12 20:29:19', '2023-12-12 20:29:19'),
+(2, 'تومان', '2023-12-12 20:29:19', '2023-12-12 20:29:19');
+
 -- --------------------------------------------------------
 
 --
@@ -90,6 +98,14 @@ CREATE TABLE `Orders` (
   `updatedAt` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `Orders`
+--
+
+INSERT INTO `Orders` (`id`, `selerId`, `currenyId`, `catgoiesId`, `count`, `body`, `createdAt`, `updatedAt`) VALUES
+(1, 1, 1, 1, '20', '{\"price\":\"400\"}', '2023-12-12 20:33:06', '2023-12-12 20:33:06'),
+(2, 1, 2, 1, '20', '{\"price\":\"400\"}', '2023-12-12 20:33:22', '2023-12-12 20:33:22');
+
 -- --------------------------------------------------------
 
 --
@@ -102,6 +118,14 @@ CREATE TABLE `Roles` (
   `createdAt` datetime NOT NULL DEFAULT current_timestamp(),
   `updatedAt` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `Roles`
+--
+
+INSERT INTO `Roles` (`id`, `title`, `createdAt`, `updatedAt`) VALUES
+(1, 'admin', '2023-12-12 20:27:56', '2023-12-12 20:27:56'),
+(2, 'user', '2023-12-12 20:27:56', '2023-12-12 20:27:56');
 
 -- --------------------------------------------------------
 
@@ -251,19 +275,19 @@ ALTER TABLE `Catgories`
 -- AUTO_INCREMENT for table `Currencies`
 --
 ALTER TABLE `Currencies`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `Orders`
 --
 ALTER TABLE `Orders`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `Roles`
 --
 ALTER TABLE `Roles`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `UserRoles`
