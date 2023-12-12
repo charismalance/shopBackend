@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Dec 12, 2023 at 05:42 PM
+-- Generation Time: Dec 12, 2023 at 05:56 PM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.2.28
 
@@ -30,8 +30,8 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `Basekets` (
   `id` int(11) NOT NULL,
-  `orderId` int(11) DEFAULT NULL,
-  `uesrId` int(11) DEFAULT NULL,
+  `orderId` int(11) NOT NULL,
+  `uesrId` int(11) NOT NULL,
   `createdAt` datetime NOT NULL,
   `updatedAt` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -54,11 +54,11 @@ CREATE TABLE `Catgories` (
 --
 
 INSERT INTO `Catgories` (`id`, `title`, `createdAt`, `updatedAt`) VALUES
-(1, 'تلفن همراه', '2023-12-08 08:14:21', '2023-12-08 08:14:21'),
-(2, 'لوازم خانگی', '2023-12-08 08:14:21', '2023-12-08 08:14:21'),
-(3, 'صنایع دستی', '2023-12-08 08:14:21', '2023-12-08 08:14:21'),
-(4, 'کامپیوتر', '2023-12-08 08:14:21', '2023-12-08 08:14:21'),
-(5, 'لوازم جانبی', '2023-12-08 08:14:21', '2023-12-08 08:14:21');
+(1, 'تلفن همراه', '2023-12-12 16:55:39', '2023-12-12 16:55:39'),
+(2, 'لوازم خانگی', '2023-12-12 16:55:39', '2023-12-12 16:55:39'),
+(3, 'صنایع دستی', '2023-12-12 16:55:39', '2023-12-12 16:55:39'),
+(4, 'کامپیوتر', '2023-12-12 16:55:39', '2023-12-12 16:55:39'),
+(5, 'لوازم جانبی', '2023-12-12 16:55:39', '2023-12-12 16:55:39');
 
 -- --------------------------------------------------------
 
@@ -73,15 +73,6 @@ CREATE TABLE `Currencies` (
   `updatedAt` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data for table `Currencies`
---
-
-INSERT INTO `Currencies` (`id`, `title`, `createdAt`, `updatedAt`) VALUES
-(1, 'تومان', '2023-12-08 11:45:20', '2023-12-08 11:45:20'),
-(2, 'ریال', '2023-12-08 11:45:20', '2023-12-08 11:45:20'),
-(3, 'درصد', '2023-12-08 11:45:20', '2023-12-08 11:45:20');
-
 -- --------------------------------------------------------
 
 --
@@ -90,22 +81,14 @@ INSERT INTO `Currencies` (`id`, `title`, `createdAt`, `updatedAt`) VALUES
 
 CREATE TABLE `Orders` (
   `id` int(11) NOT NULL,
-  `selerId` int(11) DEFAULT NULL,
-  `currenyId` int(11) DEFAULT NULL,
-  `catgoiesId` int(11) DEFAULT NULL,
-  `count` varchar(255) DEFAULT NULL,
-  `body` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL CHECK (json_valid(`body`)),
+  `selerId` int(11) NOT NULL,
+  `currenyId` int(11) NOT NULL,
+  `catgoiesId` int(11) NOT NULL,
+  `count` varchar(255) NOT NULL,
+  `body` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL CHECK (json_valid(`body`)),
   `createdAt` datetime NOT NULL DEFAULT current_timestamp(),
   `updatedAt` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `Orders`
---
-
-INSERT INTO `Orders` (`id`, `selerId`, `currenyId`, `catgoiesId`, `count`, `body`, `createdAt`, `updatedAt`) VALUES
-(1, 2, 3, 1, '100', '{\r\n\"price\" : \"5000\"\r\n}', '2023-12-12 19:42:27', '2023-12-12 19:42:27'),
-(2, 2, 2, 5, '20', NULL, '2023-12-12 19:57:14', '2023-12-12 19:57:14');
 
 -- --------------------------------------------------------
 
@@ -151,8 +134,8 @@ INSERT INTO `SequelizeMeta` (`name`) VALUES
 
 CREATE TABLE `UserRoles` (
   `id` int(11) NOT NULL,
-  `userId` int(11) DEFAULT NULL,
-  `roleId` int(11) DEFAULT NULL,
+  `userId` int(11) NOT NULL,
+  `roleId` int(11) NOT NULL,
   `createdAt` datetime NOT NULL DEFAULT current_timestamp(),
   `updatedAt` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -186,7 +169,7 @@ CREATE TABLE `Users` (
 --
 
 INSERT INTO `Users` (`id`, `username`, `email`, `password`, `phone`, `firstName`, `lastName`, `nationalCode`, `gender`, `verificationCode`, `verificationCodeExpireTime`, `isVerified`, `townshipId`, `createdAt`, `updatedAt`) VALUES
-(2, 'mayam@kordloo.com', 'mayam@kordloo.com', '$2b$10$eLQCO7nTy2nW1rMbbJPx7uzzB0bCeRmEQpsKaOAnHd84XpyVvUHOa', '09199559728', 'mayayam', 'kordlo', NULL, NULL, NULL, NULL, NULL, NULL, '2023-12-08 08:14:21', '2023-12-08 08:14:21');
+(1, 'mayam@koordlo.com', 'mayam@koordlo.com', '$2b$10$yBId6hrVy8k4HJbsODMSgOsMwQLnxoDL7dnP1tpJnm4FY/S6FmEoW', '09199559728', 'mayayam', 'kordlo', NULL, NULL, NULL, NULL, NULL, NULL, '2023-12-12 16:55:39', '2023-12-12 16:55:39');
 
 --
 -- Indexes for dumped tables
@@ -268,13 +251,13 @@ ALTER TABLE `Catgories`
 -- AUTO_INCREMENT for table `Currencies`
 --
 ALTER TABLE `Currencies`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `Orders`
 --
 ALTER TABLE `Orders`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `Roles`
@@ -292,7 +275,7 @@ ALTER TABLE `UserRoles`
 -- AUTO_INCREMENT for table `Users`
 --
 ALTER TABLE `Users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- Constraints for dumped tables

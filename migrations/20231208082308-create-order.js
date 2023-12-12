@@ -11,6 +11,7 @@ module.exports = {
       },
       selerId: {
         type: Sequelize.INTEGER ,
+        allowNull:false , 
         references:{
           model:'Users',
           key:'id'
@@ -18,6 +19,7 @@ module.exports = {
       },
       currenyId: {
         type: Sequelize.INTEGER ,
+        allowNull:false , 
         references:{
           model:'Currencies',
           key:'id'
@@ -25,16 +27,19 @@ module.exports = {
       },
       catgoiesId: {
         type: Sequelize.INTEGER  ,
+        allowNull:false , 
         references:{
           model:'Catgories',
           key:'id'
         }
       },
       count: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
+        allowNull:false , 
       },
       body: {
-        type: Sequelize.JSON
+        type: Sequelize.JSON,
+        allowNull:false , 
       },
       createdAt: {
         allowNull: false,

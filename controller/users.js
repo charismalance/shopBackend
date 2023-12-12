@@ -8,7 +8,7 @@ const Category = require("../models").Catgories
 const bcrypt = require("bcrypt")
 
 
-
+//  بعدا باید تکمیل بشه 
 exports.deteleOrder = async(req,res,next)=>{
     try {
         let find = false
@@ -30,7 +30,14 @@ exports.deteleOrder = async(req,res,next)=>{
     }
 }
 exports.deleteFromBascket = async(req,res,next)=>{}
-exports.addOrder = async(req,res,next)=>{}
+exports.addOrder = async(req,res,next)=>{
+    try {
+        await Order.create(req.body)
+        return res.send("inseted")
+    } catch (error) {
+        return res.status(500).send({error :error.message})
+    }
+}
 exports.addToBasket = async(req,res,next)=>{}
 
 exports.addAdminUser = async(req,res,next)=>{}
